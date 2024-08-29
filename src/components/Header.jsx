@@ -3,6 +3,7 @@ import styled from "styled-components";
 import logo from "../assets/demazeLogo.png";
 import Button from "./Button";
 import { MdMenu } from "react-icons/md";
+// import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -10,23 +11,27 @@ const Header = () => {
       <div className="main">
         <div className="logo">
           <img src={logo} alt="Demaze"></img>
+          {/* <Link to="/" className="navLink"></Link> */}
         </div>
         <ul className="navLists">
           <li className="navItem">
-            <a href="" className="navLink">
+            <a href="#" className="navLink">
               Services
             </a>
+            {/* <Link to="/services" className="navLink"></Link> */}
           </li>
           <li className="navItem">
-            <a href="" className="navLink">
+            <a href="#" className="navLink">
               About Us
             </a>
+            {/* <Link to="/about" className="navLink"></Link> */}
           </li>
         </ul>
       </div>
       <div className="contact">
         <div className="contact-btn">
           <Button name="Contact Us" />
+          {/* <Link to="/contact"></Link> */}
         </div>
         <div className="menu-btn">
           <MdMenu className="menu" size={20} />
