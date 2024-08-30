@@ -15,13 +15,13 @@ const Header = () => {
         </div>
         <ul className="navLists">
           <li className="navItem">
-            <a href="#" className="navLink">
+            <a href="/services" className="navLink">
               Services
             </a>
             {/* <Link to="/services" className="navLink"></Link> */}
           </li>
           <li className="navItem">
-            <a href="#" className="navLink">
+            <a href="/about" className="navLink">
               About Us
             </a>
             {/* <Link to="/about" className="navLink"></Link> */}
@@ -29,10 +29,12 @@ const Header = () => {
         </ul>
       </div>
       <div className="contact">
-        <div className="contact-btn">
+        {/* <div className="contact-btn"> */}
+        <a href="/contact">
           <Button name="Contact Us" />
-          {/* <Link to="/contact"></Link> */}
-        </div>
+        </a>
+        {/* <Link to="/contact"></Link> */}
+        {/* </div> */}
         <div className="menu-btn">
           <MdMenu className="menu" size={20} />
         </div>
@@ -103,6 +105,9 @@ const Navbar = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    a {
+      list-style: none;
+    }
     .menu-btn {
       display: none;
       .menu {

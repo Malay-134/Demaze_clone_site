@@ -20,24 +20,24 @@ const Footer = () => {
         <div className="footer-content-1">
           <img src={logo} alt="logo" />
           <div className="footer-social-icons">
-            <div>
+            <a href="https://www.facebook.com/">
               <FaFacebook size={25} className="icon" />
-            </div>
-            <div className="icon">
+            </a>
+            <a href="https://x.com/">
               <FaTwitter size={25} className="icon" />
-            </div>
-            <div className="icon">
+            </a>
+            <a href="https://www.skype.com/en/">
               <FaSkype size={25} className="icon" />
-            </div>
-            <div className="icon">
+            </a>
+            <a href="https://www.linkedin.com/">
               <FaLinkedin size={25} className="icon" />
-            </div>
-            <div className="icon">
+            </a>
+            <a href="https://www.instagram.com/">
               <FaInstagramSquare size={25} className="icon" />
-            </div>
-            <div className="icon">
+            </a>
+            <a href="https://in.pinterest.com/">
               <FaPinterest size={25} className="icon" />
-            </div>
+            </a>
           </div>
         </div>
         <div className="footer-content-2">
@@ -132,6 +132,11 @@ const Container = styled.div`
         margin-top: 15px;
         display: flex;
         gap: 14px;
+        a {
+          .icon {
+            color: #000;
+          }
+        }
       }
       li {
         list-style: none;

@@ -98,30 +98,16 @@ const Container = styled.div`
     grid-template-columns: repeat(3, 1fr);
     .box {
       display: flex;
+      flex-direction: column;
       border-radius: 10px;
       border: 1px solid #f3f4f6;
-      flex-direction: column;
       justify-content: start;
-      .service-logo {
-        margin: 25px;
-        height: 90px;
-        width: 90px;
-        img {
-          height: 100%;
-          width: 100%;
-        }
-      }
+      padding: 25px;
+      gap: 15px;
       .title {
         color: black;
-        margin-left: 25px;
         font-size: 20px;
         font-weight: 600;
-      }
-      .text {
-        margin-top: 10px;
-        margin-left: 25px;
-        margin-right: 25px;
-        margin-bottom: 50px;
       }
       &:hover {
         box-shadow: 1px 5px 10px 1px rgba(0, 0, 0, 0.1);
@@ -153,16 +139,16 @@ const Container = styled.div`
       .box {
         width: 110%;
         .service-logo {
-          margin: 40px;
-          height: 170px;
-          width: 170px;
+          /* margin: 40px; */
+          /* height: 170px; */
+          /* width: 170px; */
           img {
-            height: 100%;
-            width: 100%;
+            /* height: 100%; */
+            /* width: 100%; */
           }
         }
         .title {
-          margin-right: 40px;
+          /* margin-right: 40px; */
           font-size: 40px;
         }
         .text {

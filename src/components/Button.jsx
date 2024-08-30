@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const Button = (props) => {
-  const { isOutline, secondary_btn, primary_btn } = props;
+  const { isOutline } = props;
   return (
     <Btn>
       <div className={isOutline ? "secondary_btn" : "primary_btn"}>
@@ -17,7 +17,7 @@ export default Button;
 const Btn = styled.div`
   align-items: center;
   margin-top: -5px;
-  border-radius: 25px;
+  border-radius: 20px;
   background-color: var(--btnColor);
   cursor: pointer;
 
@@ -39,7 +39,7 @@ const Btn = styled.div`
     color: var(--primaryColor);
     border: 1px solid var(--primaryColor);
     background-color: white;
-    border-radius: 25px;
+    border-radius: 20px;
     font-size: 1rem;
     font-weight: 800;
     display: flex;
