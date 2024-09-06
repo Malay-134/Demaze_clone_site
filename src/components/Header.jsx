@@ -3,6 +3,7 @@ import styled from "styled-components";
 import logo from "../assets/demazeLogo.png";
 import Button from "./Button";
 import { MdMenu } from "react-icons/md";
+import { Link } from "react-router-dom";
 // import { Link } from "react-router-dom";
 
 const Header = () => {
@@ -15,26 +16,23 @@ const Header = () => {
         </div>
         <ul className="navLists">
           <li className="navItem">
-            <a href="/services" className="navLink">
+            <Link to="/services" className="navLink">
               Services
-            </a>
+            </Link>
             {/* <Link to="/services" className="navLink"></Link> */}
           </li>
           <li className="navItem">
-            <a href="/about" className="navLink">
+            <Link to="/about" className="navLink">
               About Us
-            </a>
+            </Link>
             {/* <Link to="/about" className="navLink"></Link> */}
           </li>
         </ul>
       </div>
       <div className="contact">
-        {/* <div className="contact-btn"> */}
-        <a href="/contact">
+        <Link to="/contact">
           <Button name="Contact Us" />
-        </a>
-        {/* <Link to="/contact"></Link> */}
-        {/* </div> */}
+        </Link>
         <div className="menu-btn">
           <MdMenu className="menu" size={20} />
         </div>
@@ -106,7 +104,7 @@ const Navbar = styled.div`
     align-items: center;
     justify-content: center;
     a {
-      list-style: none;
+      text-decoration: none;
     }
     .menu-btn {
       display: none;
@@ -136,7 +134,7 @@ const Navbar = styled.div`
     }
     .contact {
       margin-right: 80px;
-      .contact-btn {
+      a {
         display: none;
       }
       .menu-btn {

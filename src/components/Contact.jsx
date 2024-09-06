@@ -2,9 +2,21 @@ import React from "react";
 import styled from "styled-components";
 import { MdLocationOn, MdEmail } from "react-icons/md";
 import { IoMdCall } from "react-icons/io";
-import Button from "./Button";
+import { useForm } from "react-hook-form";
 
 const Contact = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmitHandler = (data) => {
+    console.log(data);
+    const JsonData = JSON.stringify(data);
+    localStorage.setItem("FormData", JsonData);
+    alert("Form data saved to local storage!");
+  };
   return (
     <Container>
       <div className="card">
@@ -47,30 +59,97 @@ const Contact = () => {
       </div>
       <div className="form">
         <h1>Let's discuss your project</h1>
-        <div className="main">
+        <form onSubmit={handleSubmit(onSubmitHandler)} className="main">
           <div className="input-row1">
             <div className="input-group">
-              <input type="text" placeholder="First Name" />
+              {/* <label>USERNAME</label> */}
+              <input
+                type="text"
+                placeholder="First Name"
+                {...register("firstName", {
+                  required: "FirstName is required",
+                })}
+              />
+              {errors.firstName && (
+                <span className="secondary_text">
+                  {errors.firstName.message}
+                </span>
+              )}
+              {/* <input type="text" placeholder="First Name" /> */}
             </div>
             <div className="input-group">
-              <input type="text" placeholder="Last Name" />
+              <input
+                type="text"
+                placeholder="Last Name"
+                {...register("lastName")}
+              />
+              {errors.lastName && (
+                <span className="secondary_text">
+                  {errors.lastName.message}
+                </span>
+              )}
+              {/* <input type="text" placeholder="Last Name" /> */}
             </div>
           </div>
           <div className="input-row2">
             <div className="input-group">
-              <input type="mail" placeholder="Email" />
+              <input
+                type="email"
+                placeholder="Email"
+                {...register("email", {
+                  required: "Email is required",
+                  pattern: {
+                    value: /^[^@]+@[^@]+\.[^@]+$/,
+                    message: "Invalid email address",
+                  },
+                })}
+              />
+              {errors.email && (
+                <span className="secondary_text">{errors.email.message}</span>
+              )}
+
+              {/* <input type="mail" placeholder="Email" /> */}
             </div>
             <div className="input-group">
-              <input type="text" placeholder="Phone Number" />
+              <input
+                type="number"
+                placeholder="Phone Number"
+                {...register("phonenumber", {
+                  required: "Phone is required",
+                  maxLength: {
+                    value: 10,
+                    message: "Phone number should be 10 digits",
+                  },
+                  minLength: {
+                    value: 10,
+                    message: "Phone number should be 10 digits",
+                  },
+                })}
+              />
+              {errors.phonenumber && (
+                <span className="secondary_text">
+                  {errors.phonenumber.message}
+                </span>
+              )}
+              {/* <input type="text" placeholder="Phone Number" /> */}
             </div>
             <div className="input-group">
-              <input className="message" type="mail" placeholder="Message" />
+              <input
+                className="message"
+                type="text"
+                placeholder="Message"
+                {...register("message")}
+              />
+              {/* <input className="message" type="mail" placeholder="Message" /> */}
             </div>
-            <div className="btn">
-              <Button name="S U B M I T" className="submit" />
-            </div>
+            <button type="submit" className="submit">
+              S U B M I T
+            </button>
+            {/* <div className="submit">
+              <Button name="S U B M I T" />
+            </div> */}
           </div>
-        </div>
+        </form>
       </div>
     </Container>
   );
@@ -138,6 +217,10 @@ const Container = styled.div`
         padding: 20px 0;
         .input-group {
           width: 100%;
+          .secondary_text {
+            color: red;
+            font-size: 0.8rem;
+          }
           input {
             width: 90%;
             border: none;
@@ -161,6 +244,10 @@ const Container = styled.div`
           .message {
             padding: 10px 10px 110px 10px;
           }
+          .secondary_text {
+            font-size: 0.8rem;
+            color: red;
+          }
           input {
             width: 95%;
             border: none;
@@ -174,8 +261,18 @@ const Container = styled.div`
             }
           }
         }
-        .btn {
-          padding: 5px 400px 0px 5px;
+        .submit {
+          padding: 17px 30px;
+          color: white;
+          font-size: 1rem;
+          font-weight: 800;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: none;
+          border-radius: 20px;
+          background-color: var(--btnColor);
+          cursor: pointer;
         }
       }
     }
@@ -222,9 +319,14 @@ const Container = styled.div`
         .input-row1 {
           padding: 40px 0;
           .input-group {
+            .secondary_text {
+              font-size: 24px;
+              color: red;
+            }
             input {
               width: 85%;
               padding: 30px 20px;
+              font-size: 32px;
               &::placeholder {
                 font-size: 32px;
                 line-height: 38px;
@@ -234,19 +336,25 @@ const Container = styled.div`
         }
         .input-row2 {
           .input-group {
+            .secondary_text {
+              font-size: 24px;
+              color: red;
+            }
             .message {
               padding: 10px 10px 130px 20px;
             }
             input {
               padding: 30px 20px;
+              font-size: 32px;
               &::placeholder {
                 font-size: 32px;
                 line-height: 38px;
               }
             }
           }
-          .btn {
-            padding: 10px 30px 0px 10px;
+          .submit {
+            padding: 30px 10px;
+            font-size: 30px;
           }
         }
       }
@@ -280,9 +388,14 @@ const Container = styled.div`
         .input-row1 {
           padding: 40px 0;
           .input-group {
+            .secondary_text {
+              font-size: 35px;
+              color: red;
+            }
             input {
               width: 85%;
               padding: 30px 20px;
+              font-size: 40px;
               &::placeholder {
                 font-size: 40px;
                 line-height: 54px;
@@ -295,16 +408,22 @@ const Container = styled.div`
             .message {
               padding: 30px 0px 150px 25px;
             }
+            .secondary_text {
+              font-size: 35px;
+              color: red;
+            }
             input {
               padding: 40px 20px;
+              font-size: 40px;
               &::placeholder {
                 font-size: 40px;
                 line-height: 54px;
               }
             }
           }
-          .btn {
-            padding: 10px 30px 0px 10px;
+          .submit {
+            padding: 30px 10px;
+            font-size: 32px;
           }
         }
       }

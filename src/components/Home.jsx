@@ -4,6 +4,7 @@ import styled from "styled-components";
 import img1 from "../assets/img1.png";
 import img2 from "../assets/img2.png";
 import img3 from "../assets/img3.png";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -17,8 +18,12 @@ const Home = () => {
           processes through Website & Mobile Application.
         </p>
         <div className="btns">
-          <Button name="Contact Us" />
-          <Button name="About US" isOutline={true} />
+          <Link to="/contact">
+            <Button name="Contact Us" />
+          </Link>
+          <Link to="/about">
+            <Button name="About US" isOutline={true} />
+          </Link>
         </div>
       </div>
       <div className="img_div">
@@ -73,6 +78,9 @@ const Container = styled.div`
       display: flex;
       flex-direction: row;
       gap: 30px;
+      a {
+        text-decoration: none;
+      }
     }
   }
   .img_div {
@@ -178,7 +186,7 @@ const Container = styled.div`
         font-size: 110px;
         line-height: 100px;
       }
-      p{
+      p {
         font-size: 29px;
       }
     }
@@ -191,7 +199,7 @@ const Container = styled.div`
         font-size: 120px;
         line-height: 120px;
       }
-      p{
+      p {
         font-size: 38px;
       }
     }

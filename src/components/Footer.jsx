@@ -12,6 +12,7 @@ import {
 
 import { MdLocationOn, MdEmail } from "react-icons/md";
 import { IoMdCall } from "react-icons/io";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -43,10 +44,18 @@ const Footer = () => {
         <div className="footer-content-2">
           <h2>Company</h2>
           <ul>
-            <li>About us</li>
-            <li>Services</li>
-            <li>Projects</li>
-            <li>Contact Us </li>
+            <li>
+              <Link to="/about">About us</Link>
+            </li>
+            <li>
+              <Link to="/services">Services</Link>
+            </li>
+            <li>
+              <Link to="/project">Projects</Link>
+            </li>
+            <li>
+              <Link to="/contact">Contact Us </Link>
+            </li>
           </ul>
         </div>
         <div className="footer-content-3">
@@ -124,6 +133,10 @@ const Container = styled.div`
       flex-direction: column;
       gap: 20px;
       width: 25%;
+      a {
+        color: black;
+        text-decoration: none;
+      }
       img {
         width: 160px;
         height: 64px;

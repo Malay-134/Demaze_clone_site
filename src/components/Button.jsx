@@ -2,12 +2,10 @@ import React from "react";
 import styled from "styled-components";
 
 const Button = (props) => {
-  const { isOutline } = props;
+  const { isOutline, name } = props;
   return (
     <Btn>
-      <div className={isOutline ? "secondary_btn" : "primary_btn"}>
-        {props.name}
-      </div>
+      <div className={isOutline ? "secondary_btn" : "primary_btn"}>{name}</div>
     </Btn>
   );
 };
