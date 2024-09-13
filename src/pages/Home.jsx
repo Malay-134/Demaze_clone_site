@@ -7,6 +7,8 @@ import Solution from "../components/Solution";
 import Plan from "../components/Plan";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const HomePage = () => {
   return (
@@ -19,6 +21,7 @@ const HomePage = () => {
       <Plan />
       <Contact />
       <Footer />
+      <ToastContainer />
     </>
   );
 };

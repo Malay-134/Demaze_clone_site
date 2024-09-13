@@ -74,10 +74,13 @@ const Footer = () => {
               <MdLocationOn size={25} className="icon" />
             </div>
             <div className="title">
-              <p className="secondary_text">
+              <a
+                href="https://www.google.com/maps/place/Ganesh+Glory+11/@23.114257,72.5377561,17z/data=!3m1!4b1!4m6!3m5!1s0x395e8340ebe5d7cb:0x4b3ffb517276bef6!8m2!3d23.1142521!4d72.540331!16s%2Fg%2F11p76kt1wq?entry=ttu&g_ep=EgoyMDI0MDkwOS4wIKXMDSoASAFQAw%3D%3D"
+                className="secondary_text"
+              >
                 D-814, Ganesh Glory 11, Jagatpur Road, S.G. Highway, Gota,
                 Ahmedabad, Gujarat, 382470
-              </p>
+              </a>
             </div>
           </div>
 

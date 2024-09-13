@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { MdLocationOn, MdEmail } from "react-icons/md";
 import { IoMdCall } from "react-icons/io";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 
 const Contact = () => {
   const {
@@ -11,10 +12,17 @@ const Contact = () => {
     formState: { errors },
   } = useForm();
 
+  const onError = (errors) => {
+    Object.values(errors).forEach((error) => {
+      toast.error(error.message);
+    });
+  };
+
   const onSubmitHandler = (data) => {
     console.log(data);
     const JsonData = JSON.stringify(data);
     localStorage.setItem("FormData", JsonData);
+    toast.success("Form submitted successfully");
     alert("Form data saved to local storage!");
   };
   return (
@@ -32,10 +40,13 @@ const Contact = () => {
           </div>
           <div className="title">
             <h3>visit us</h3>
-            <p className="secondary_text">
+            <a
+              href="https://www.google.com/maps/place/Ganesh+Glory+11/@23.114257,72.5377561,17z/data=!3m1!4b1!4m6!3m5!1s0x395e8340ebe5d7cb:0x4b3ffb517276bef6!8m2!3d23.1142521!4d72.540331!16s%2Fg%2F11p76kt1wq?entry=ttu&g_ep=EgoyMDI0MDkwOS4wIKXMDSoASAFQAw%3D%3D"
+              className="secondary_text"
+            >
               D-814, Ganesh Glory 11, Jagatpur Road, S.G. Highway, Gota,
               Ahmedabad, Gujarat, 382470
-            </p>
+            </a>
           </div>
         </div>
         <div className="mail">
@@ -59,10 +70,12 @@ const Contact = () => {
       </div>
       <div className="form">
         <h1>Let's discuss your project</h1>
-        <form onSubmit={handleSubmit(onSubmitHandler)} className="main">
+        <form
+          onSubmit={handleSubmit(onSubmitHandler, onError)}
+          className="main"
+        >
           <div className="input-row1">
             <div className="input-group">
-              {/* <label>USERNAME</label> */}
               <input
                 type="text"
                 placeholder="First Name"
@@ -75,7 +88,6 @@ const Contact = () => {
                   {errors.firstName.message}
                 </span>
               )}
-              {/* <input type="text" placeholder="First Name" /> */}
             </div>
             <div className="input-group">
               <input
@@ -88,7 +100,6 @@ const Contact = () => {
                   {errors.lastName.message}
                 </span>
               )}
-              {/* <input type="text" placeholder="Last Name" /> */}
             </div>
           </div>
           <div className="input-row2">
@@ -107,12 +118,11 @@ const Contact = () => {
               {errors.email && (
                 <span className="secondary_text">{errors.email.message}</span>
               )}
-
-              {/* <input type="mail" placeholder="Email" /> */}
             </div>
             <div className="input-group">
               <input
                 type="number"
+                className="no-spinner"
                 placeholder="Phone Number"
                 {...register("phonenumber", {
                   required: "Phone is required",
@@ -131,7 +141,6 @@ const Contact = () => {
                   {errors.phonenumber.message}
                 </span>
               )}
-              {/* <input type="text" placeholder="Phone Number" /> */}
             </div>
             <div className="input-group">
               <input
@@ -140,21 +149,16 @@ const Contact = () => {
                 placeholder="Message"
                 {...register("message")}
               />
-              {/* <input className="message" type="mail" placeholder="Message" /> */}
             </div>
             <button type="submit" className="submit">
               S U B M I T
             </button>
-            {/* <div className="submit">
-              <Button name="S U B M I T" />
-            </div> */}
           </div>
         </form>
       </div>
     </Container>
   );
 };
-
 export default Contact;
 
 const Container = styled.div`
@@ -180,6 +184,7 @@ const Container = styled.div`
         line-height: 36px;
       }
       .secondary_text {
+        text-decoration: none;
         font-size: 1rem;
         line-height: 24px;
         color: white;
@@ -227,7 +232,6 @@ const Container = styled.div`
             padding: 10px;
             border-bottom: 1px solid black;
             &::placeholder {
-              padding: 5px;
               font-weight: 400;
               font-size: 16px;
               line-height: 24px;
@@ -254,7 +258,6 @@ const Container = styled.div`
             padding: 10px;
             border-bottom: 1px solid black;
             &::placeholder {
-              padding: 5px;
               font-weight: 400;
               font-size: 16px;
               line-height: 24px;

@@ -16,3 +16,8 @@
   font-weight: 400;
   color: var(--secondaryColor);
 }
+
+.no-spinner::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
